@@ -373,4 +373,379 @@
         };
     </script>
 </body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVERONE | DJ & Producer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <!-- AOS Library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            --purple: #9d50bb;
+            --pink: #ffb7c5;
+            --apple-green: #8db600;
+            --aquamarine: #7fffd4;
+            --bg-dark: #070707;
+            --bg-card: rgba(15, 15, 15, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e5e5e5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Syncopate', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Transiciones de Sección con bordes suavizados y parallax sutil */
+        section {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Degradados de transición entre secciones */
+        .section-divider-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, var(--bg-dark), transparent);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Fondos Atmosféricos con efecto Fixed para Parallax */
+        .bg-storm-purple {
+            background: linear-gradient(rgba(10, 0, 20, 0.9), rgba(7, 7, 7, 0.95)), 
+                        url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .bg-storm-aqua {
+            background: linear-gradient(rgba(0, 20, 20, 0.9), rgba(7, 7, 7, 0.95)), 
+                        url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .bg-storm-dark {
+            background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(20, 0, 40, 0.8)), 
+                        url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(7,7,7,1)), 
+                        url('https://res.cloudinary.com/dbkqmpy8i/image/upload/v1778679682/IMG_8569.JPG_vwhujr.jpg') center/cover no-repeat;
+        }
+
+        /* Custom UI Elements */
+        .text-aquamarine { color: var(--aquamarine); }
+        .text-pink { color: var(--pink); }
+        .text-green { color: var(--apple-green); }
+        
+        .card {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(20, 20, 20, 0.9);
+        }
+
+        .title-gradient {
+            background: linear-gradient(to right, var(--purple), var(--pink), var(--aquamarine));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-main {
+            background: linear-gradient(45deg, var(--purple), var(--aquamarine));
+            color: black;
+            font-weight: 800;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-main:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 25px var(--aquamarine);
+            transform: scale(1.05) translateY(-2px);
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 1rem;
+            position: relative;
+            aspect-ratio: 4/5;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.15);
+        }
+
+        /* Glow effects for section headers */
+        .glow-text {
+            text-shadow: 0 0 15px currentColor;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/5 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="brand text-xl font-bold tracking-tighter text-white">
+                SAVER<span class="text-aquamarine">ONE</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-widest opacity-70">
+                <a href="#bio" class="hover:text-aquamarine transition-colors">Bio</a>
+                <a href="#gallery" class="hover:text-aquamarine transition-colors">Galería</a>
+                <a href="#releases" class="hover:text-aquamarine transition-colors">Releases</a>
+                <a href="#rider" class="hover:text-aquamarine transition-colors">Rider</a>
+                <a href="#booking" class="hover:text-aquamarine transition-colors">Booking</a>
+            </div>
+            <a href="#booking" class="btn-main px-5 py-2.5 text-[9px] uppercase tracking-widest rounded-full">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-end justify-center text-center hero-gradient px-6 pb-24">
+        <div class="max-w-4xl z-10" data-aos="fade-up" data-aos-duration="1500">
+            <p class="text-[10px] uppercase tracking-[0.7em] mb-5 text-pink font-bold">VENEZUELA • TECH HOUSE • MINIMAL</p>
+            <h1 class="text-4xl md:text-6xl font-black mb-8 tracking-[0.2em] text-white">
+                SAVER<span class="title-gradient">ONE</span>
+            </h1>
+            <p class="text-[11px] md:text-xs max-w-md mx-auto leading-loose text-neutral-400 font-light italic uppercase tracking-widest">
+                Ritmo caracterizado por una línea <span class="text-aquamarine font-bold">vibrante</span> y una selección musical de vanguardia.
+            </p>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7"></path></svg>
+        </div>
+    </header>
+
+    <!-- Biografía -->
+    <section id="bio" class="py-40 px-6 bg-storm-purple">
+        <div class="section-divider-top"></div>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative" data-aos="fade-right">
+                <div class="absolute -inset-4 bg-purple-600/20 rounded-2xl blur-2xl"></div>
+                <img src="https://res.cloudinary.com/dbkqmpy8i/image/upload/v1778679680/IMG_6138_rcnwpq.jpg" alt="Saverone Portrait" class="relative rounded-2xl grayscale hover:grayscale-0 transition duration-1000 w-full object-cover shadow-2xl border border-white/10">
+            </div>
+            <div class="space-y-8" data-aos="fade-left">
+                <h2 class="text-4xl font-bold tracking-tighter text-white glow-text text-purple-400">La <span class="text-white">Visión</span></h2>
+                <div class="space-y-6 text-neutral-300 leading-relaxed text-sm font-light">
+                    <p>
+                        Desde 2018, Saverone ha definido un sonido propio en la escena venezolana, mezclando la sofisticación del <span class="text-white">Minimal Deep Tech</span> con la energía explosiva del Tech House moderno.
+                    </p>
+                    <p>
+                        Su presencia en cabina junto a figuras como <span class="text-pink">Joey Daniel</span> confirma su estatus como uno de los talentos más sólidos de la nueva generación.
+                    </p>
+                </div>
+                <div class="pt-6 flex flex-wrap gap-4">
+                    <span class="px-4 py-2 bg-black/40 border border-purple-500/30 text-purple-300 rounded-full text-[9px] font-bold uppercase tracking-widest">Minimal</span>
+                    <span class="px-4 py-2 bg-black/40 border border-aquamarine/30 text-aquamarine rounded-full text-[9px] font-bold uppercase tracking-widest">Tech House</span>
+                    <span class="px-4 py-2 bg-black/40 border border-pink-500/30 text-pink-300 rounded-full text-[9px] font-bold uppercase tracking-widest">Underground</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="gallery" class="py-40 px-6 bg-storm-aqua">
+        <div class="section-divider-top"></div>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl font-black uppercase tracking-[0.3em] text-aquamarine glow-text mb-4">Live <span class="text-white">Snapshots</span></h2>
+                <div class="h-1 w-20 bg-aquamarine mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://res.cloudinary.com/dbkqmpy8i/image/upload/v1778679684/IMG_8568.JPG_h7hg1x.jpg" class="gallery-img">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://res.cloudinary.com/dbkqmpy8i/image/upload/v1778679681/IMG_8567.JPG_jpknbv.jpg" class="gallery-img">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://res.cloudinary.com/dbkqmpy8i/image/upload/v1778679677/IMG_3456.JPG_inqha1.jpg" class="gallery-img">
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://res.cloudinary.com/dbkqmpy8i/image/upload/v1778679678/IMG_3479.JPG_ydgjqe.jpg" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Releases -->
+    <section id="releases" class="py-40 px-6 bg-storm-dark">
+        <div class="section-divider-top"></div>
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-up">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl font-black title-gradient mb-4">Discografía</h2>
+                    <p class="text-xs uppercase tracking-widest text-neutral-500 leading-loose">Lanzamientos oficiales en los sellos más influyentes de la escena actual.</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="card p-10 rounded-3xl group" data-aos="flip-left" data-aos-delay="100">
+                    <div class="relative overflow-hidden rounded-2xl mb-8 shadow-2xl">
+                        <div class="bg-gradient-to-br from-aquamarine/30 to-black aspect-square flex items-center justify-center">
+                            <svg class="w-16 h-16 text-aquamarine/40 group-hover:scale-110 transition-transform duration-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Wo Seduction</h3>
+                    <p class="text-[10px] text-aquamarine font-black uppercase tracking-widest">Ride Music</p>
+                </div>
+                <div class="card p-10 rounded-3xl group" data-aos="flip-left" data-aos-delay="300">
+                    <div class="relative overflow-hidden rounded-2xl mb-8 shadow-2xl">
+                        <div class="bg-gradient-to-br from-purple-500/30 to-black aspect-square flex items-center justify-center">
+                            <svg class="w-16 h-16 text-purple-400/40 group-hover:scale-110 transition-transform duration-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">True Sensation</h3>
+                    <p class="text-[10px] text-purple-400 font-black uppercase tracking-widest">Unnamed Unknown</p>
+                </div>
+                <div class="card p-10 rounded-3xl group" data-aos="flip-left" data-aos-delay="500">
+                    <div class="relative overflow-hidden rounded-2xl mb-8 shadow-2xl">
+                        <div class="bg-gradient-to-br from-pink-400/30 to-black aspect-square flex items-center justify-center">
+                            <svg class="w-16 h-16 text-pink-300/40 group-hover:scale-110 transition-transform duration-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Do Not Hit Him</h3>
+                    <p class="text-[10px] text-pink-300 font-black uppercase tracking-widest">Sweet Milk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rider Tecnico -->
+    <section id="rider" class="py-40 px-6 bg-storm-purple">
+        <div class="section-divider-top"></div>
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-black mb-20 text-center text-white glow-text" data-aos="fade-down">Rider <span class="text-pink">Técnico</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="card p-12 rounded-[2.5rem]" data-aos="fade-up-right">
+                    <h3 class="text-xl font-bold mb-10 flex items-center text-aquamarine">
+                        PRO SETUP <span class="ml-4 text-[9px] bg-aquamarine/10 text-aquamarine px-3 py-1.5 rounded-full uppercase font-black">Top Pick</span>
+                    </h3>
+                    <ul class="space-y-6 text-sm font-light text-neutral-400">
+                        <li class="flex justify-between border-b border-white/5 pb-4"><span>(3) CD Players Pioneer 3000</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-4"><span>Mixer Pioneer V10 / 900 NXS2</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-4"><span>(2) High Power Monitors</span></li>
+                    </ul>
+                </div>
+
+                <div class="card p-12 rounded-[2.5rem]" data-aos="fade-up-left">
+                    <h3 class="text-xl font-bold mb-10 flex items-center text-purple-400">
+                        STANDARD <span class="ml-4 text-[9px] bg-purple/10 text-purple px-3 py-1.5 rounded-full uppercase font-black">Reliable</span>
+                    </h3>
+                    <ul class="space-y-6 text-sm font-light text-neutral-400">
+                        <li class="flex justify-between border-b border-white/5 pb-4"><span>(2) CD Players Nexus 3000</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-4"><span>Mixer Pioneer 900</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-4"><span>(1) DJ Table</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hospitality - Apple Green -->
+    <section class="py-40 px-6 rounded-t-[5rem] bg-[#8db600]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto text-black">
+            <div class="flex items-center space-x-8 mb-24">
+                <div class="w-20 h-2 bg-black rounded-full"></div>
+                <h2 class="text-5xl font-black uppercase tracking-tighter">Hospitalidad</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="p-4" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-[10px] font-black uppercase tracking-[0.4em] mb-6 opacity-60">Alojamiento</h3>
+                    <p class="text-base font-medium italic leading-relaxed">
+                        "Estadía garantizada en Hotel 4★ o superior. Habitación King con WiFi y Room Service 24h."
+                    </p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-[10px] font-black uppercase tracking-[0.4em] mb-6 opacity-60">Catering</h3>
+                    <p class="text-base font-medium leading-relaxed">
+                        Cena de alta calidad previa a la actuación y acceso a bebidas premium en backstage.
+                    </p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-[10px] font-black uppercase tracking-[0.4em] mb-6 opacity-60">Bar List</h3>
+                    <ul class="text-xs font-bold space-y-4">
+                        <li class="flex justify-between border-b border-black/20 pb-3"><span>AGUA / GATORADE</span> <span>[X5]</span></li>
+                        <li class="flex justify-between border-b border-black/20 pb-3"><span>OLD PARR BOTTLE</span> <span>[X1]</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="booking" class="py-40 px-6 text-center bg-black relative">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&q=80')] bg-fixed bg-center bg-cover"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="zoom-in">
+            <h2 class="text-xs uppercase tracking-[0.6em] mb-8 text-pink font-bold glow-text">Booking Agency</h2>
+            <h1 class="text-6xl md:text-9xl font-black mb-20 tracking-tighter text-white">LET'S <span class="title-gradient">PLAY.</span></h1>
+            
+            <div class="grid md:grid-cols-2 gap-10 mb-24">
+                <a href="mailto:SAVERONE.MUSIC@GMAIL.COM" class="group p-14 bg-neutral-900/40 rounded-[3rem] border border-white/5 hover:border-aquamarine/50 transition-all duration-700 backdrop-blur-3xl">
+                    <p class="text-[9px] uppercase font-black mb-6 text-neutral-500 group-hover:text-aquamarine tracking-widest transition-colors">E-mail</p>
+                    <p class="text-xl font-bold text-white">SAVERONE.MUSIC</p>
+                </a>
+                <a href="tel:+584242275116" class="group p-14 bg-neutral-900/40 rounded-[3rem] border border-white/5 hover:border-purple/50 transition-all duration-700 backdrop-blur-3xl">
+                    <p class="text-[9px] uppercase font-black mb-6 text-neutral-500 group-hover:text-purple-400 tracking-widest transition-colors">Mobile</p>
+                    <p class="text-xl font-bold text-white">+58 424 227 5116</p>
+                </a>
+            </div>
+
+            <p class="text-[10px] uppercase tracking-[0.8em] opacity-20 text-white font-bold">SAVERONE • CARACAS • 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 120
+        });
+
+        // Simple Navbar Scroll Effect
+        window.onscroll = function() {
+            const nav = document.querySelector('nav');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('bg-black/90', 'py-3');
+                nav.classList.remove('bg-black/40', 'py-4');
+            } else {
+                nav.classList.remove('bg-black/90', 'py-3');
+                nav.classList.add('bg-black/40', 'py-4');
+            }
+        };
+    </script>
+</body>
 </html>
